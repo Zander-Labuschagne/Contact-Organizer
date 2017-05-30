@@ -5,22 +5,22 @@
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane prefHeight="291.0" prefWidth="406.0" stylesheets="@Midna.css" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="zander.AddBusinessContact">
+<AnchorPane prefHeight="291.0" prefWidth="406.0" xmlns="http://javafx.com/javafx/8.0.131" styleClass="anchorPaneDefault" xmlns:fx="http://javafx.com/fxml/1" fx:controller="zander.AddBusinessContact">
     <children>
-        <TextField fx:id="txtName" layoutX="172.0" layoutY="25.0" prefHeight="22.0" prefWidth="215.0" />
-        <TextField fx:id="txtDayNo" layoutX="172.0" layoutY="55.0" prefHeight="22.0" prefWidth="215.0" />
-        <TextField fx:id="txtFaxNo" layoutX="172.0" layoutY="85.0" prefHeight="22.0" prefWidth="215.0" />
-        <TextField fx:id="txtPosition" layoutX="172.0" layoutY="115.0" prefHeight="22.0" prefWidth="215.0" />
+        <TextField fx:id="txtName" layoutX="172.0" layoutY="25.0" prefHeight="22.0" prefWidth="215.0" styleClass="txtDefault" />
+        <TextField fx:id="txtDayNo" layoutX="172.0" layoutY="55.0" prefHeight="22.0" prefWidth="215.0" styleClass="txtDefault" />
+        <TextField fx:id="txtFaxNo" layoutX="172.0" layoutY="85.0" prefHeight="22.0" prefWidth="215.0" styleClass="txtDefault" />
+        <TextField fx:id="txtPosition" layoutX="172.0" layoutY="115.0" prefHeight="22.0" prefWidth="215.0" styleClass="txtDefault" />
+        <TextField fx:id="txtEMail" layoutX="172.0" layoutY="145.0" prefHeight="22.0" prefWidth="215.0" styleClass="txtDefault" />
+        <TextField fx:id="txtCompany" layoutX="172.0" layoutY="175.0" prefHeight="22.0" prefWidth="215.0" styleClass="txtDefault" />
+        <TextField fx:id="txtAddress" layoutX="172.0" layoutY="205.0" prefHeight="22.0" prefWidth="215.0" styleClass="txtDefault" />
         <Button layoutX="131.0" layoutY="247.0" mnemonicParsing="false" onAction="#btnAddBusinessContact_Clicked" text="Add Business Contact" />
-        <Label layoutX="17.0" layoutY="29.0" text="Contact Name:" />
-        <Label layoutX="17.0" layoutY="59.0" text="Daytime Contact Number:" />
-        <Label layoutX="17.0" layoutY="89.0" text="Fax Number:" />
-        <Label layoutX="17.0" layoutY="119.0" text="Position at Business:" />
-        <TextField fx:id="txtEMail" layoutX="172.0" layoutY="145.0" prefHeight="22.0" prefWidth="215.0" />
-        <TextField fx:id="txtCompany" layoutX="172.0" layoutY="175.0" prefHeight="22.0" prefWidth="215.0" />
-        <Label layoutX="17.0" layoutY="149.0" text="E-Mail Address:" />
-        <Label layoutX="17.0" layoutY="179.0" text="Company Name:" />
-      <Label layoutX="17.0" layoutY="209.0" text="Physical Address:" />
-      <TextField fx:id="txtAddress" layoutX="172.0" layoutY="205.0" prefHeight="22.0" prefWidth="215.0" />
+        <Label focusTraversable="false" layoutX="17.0" layoutY="29.0" text="Contact Name:" />
+        <Label focusTraversable="false" layoutX="17.0" layoutY="59.0" text="Daytime Contact Number:" styleClass="label" />
+        <Label focusTraversable="false" layoutX="17.0" layoutY="89.0" text="Fax Number:" styleClass="label"/>
+        <Label focusTraversable="false" layoutX="17.0" layoutY="119.0" text="Position at Business:" styleClass="label" />
+        <Label focusTraversable="false" layoutX="17.0" layoutY="149.0" text="E-Mail Address:" styleClass="label"/>
+        <Label focusTraversable="false" layoutX="17.0" layoutY="179.0" text="Company Name:" styleClass="label"/>
+      <Label focusTraversable="false" layoutX="17.0" layoutY="209.0" text="Physical Address:" styleClass="label"/>
     </children>
 </AnchorPane>

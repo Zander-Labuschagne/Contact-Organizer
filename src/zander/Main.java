@@ -25,13 +25,13 @@ public class Main extends Application
     public void start(Stage organizerWindow) throws Exception
     {
         organizerWindow.initStyle(StageStyle.DECORATED);
-        organizerWindow.setTitle("Organizer");
+        organizerWindow.setTitle("Contacts Organizer");
         FXMLLoader loader;
         //if(System.getProperty("os.name").startsWith("Windows"))
             loader = new FXMLLoader(getClass().getResource("Organizer.fxml"));
         organizerWindow.setResizable(true);
         organizerWindow.setScene(createScene(loader.load()));
-        organizerWindow.getScene().getStylesheets().add("Midna.css");
+        organizerWindow.getScene().getStylesheets().add(getClass().getResource("Midna.css").toExternalForm());
         Organizer organizer = loader.getController();
         organizer.initialize(organizerWindow);
         organizerWindow.show();

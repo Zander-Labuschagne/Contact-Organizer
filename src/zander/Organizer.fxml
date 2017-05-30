@@ -13,54 +13,42 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<VBox minWidth="1150.0" prefHeight="500.0" prefWidth="1150.0" styleClass="vbox" stylesheets="@Midna.css" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="zander.Organizer">
+<VBox minWidth="1150.0" prefHeight="500.0" prefWidth="1150.0" styleClass="vbox"  xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="zander.Organizer">
   <children>
-    <MenuBar VBox.vgrow="NEVER">
+    <MenuBar VBox.vgrow="NEVER" styleClass="menu-bar">
       <menus>
-        <Menu mnemonicParsing="false" text="File">
+        <Menu mnemonicParsing="false" text="File" styleClass="menu">
           <items>
-            <MenuItem mnemonicParsing="false" text="New" />
-            <MenuItem mnemonicParsing="false" text="Open…" />
-            <Menu mnemonicParsing="false" text="Open Recent" />
+            <MenuItem mnemonicParsing="false" text="New Address Book" styleClass="menu-item"/>
+            <MenuItem mnemonicParsing="false" text="Open Address Book" />
             <SeparatorMenuItem mnemonicParsing="false" />
-            <MenuItem mnemonicParsing="false" text="Save" />
-            <MenuItem mnemonicParsing="false" text="Save As…" />
-            <MenuItem mnemonicParsing="false" text="Revert" />
+            <MenuItem mnemonicParsing="false" text="Save Address Book" />
+            <MenuItem mnemonicParsing="false" text="Save Address Book As…" />
             <SeparatorMenuItem mnemonicParsing="false" />
-            <MenuItem mnemonicParsing="false" text="Preferences…" />
+            <MenuItem mnemonicParsing="false" onAction="#mnuFile_Preferences_Clicked" text="Preferences…" />
             <SeparatorMenuItem mnemonicParsing="false" />
             <MenuItem mnemonicParsing="false" onAction="#mnuFile_Exit_Clicked" text="Exit" />
           </items>
         </Menu>
-        <Menu mnemonicParsing="false" text="Edit">
+        <Menu mnemonicParsing="false" text="Appointments">
           <items>
-            <MenuItem mnemonicParsing="false" text="Undo" />
-            <MenuItem mnemonicParsing="false" text="Redo" />
+            <MenuItem mnemonicParsing="false" text="Add" />
+            <MenuItem mnemonicParsing="false" text="Remove" />
+            <MenuItem mnemonicParsing="false" text="Update" />
             <SeparatorMenuItem mnemonicParsing="false" />
-            <MenuItem mnemonicParsing="false" text="Cut" />
-            <MenuItem mnemonicParsing="false" text="Copy" />
-            <MenuItem mnemonicParsing="false" text="Paste" />
-            <MenuItem mnemonicParsing="false" text="Delete" />
-            <SeparatorMenuItem mnemonicParsing="false" />
-            <MenuItem mnemonicParsing="false" text="Select All" />
-            <MenuItem mnemonicParsing="false" text="Unselect All" />
+            <MenuItem mnemonicParsing="false" text="View Appointments..." />
           </items>
         </Menu>
         <Menu mnemonicParsing="false" text="Help">
           <items>
-            <MenuItem mnemonicParsing="false" text="About MyHelloApp" />
+            <MenuItem mnemonicParsing="false" text="About Contacts Organizer" />
           </items>
         </Menu>
       </menus>
     </MenuBar>
     <AnchorPane maxHeight="-1.0" maxWidth="-1.0" prefHeight="-1.0" prefWidth="-1.0" VBox.vgrow="ALWAYS">
       <children>
-        <Label alignment="CENTER" layoutX="155.0" layoutY="177.0" style="&#10;" text="Drag components from Library here…" textAlignment="CENTER" textFill="#9f9f9f" wrapText="false">
-          <font>
-            <Font size="18.0" />
-          </font>
-        </Label>
-            <AnchorPane layoutX="143.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="143.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+            <AnchorPane layoutX="143.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="143.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" styleClass="anchorPaneDefault">
                <children>
                   <TableView fx:id="addressbook" prefHeight="476.0" prefWidth="757.0" tableMenuButtonVisible="true" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                     <columns>
@@ -73,7 +61,10 @@
                   </TableView>
                </children>
             </AnchorPane>
-            <Button fx:id="btnAddContact" layoutX="26.0" layoutY="38.0" mnemonicParsing="false" onAction="#btnAddContact_Clicked" text="Add Contact" />
+            <Button fx:id="btnAddContact" layoutX="9.0" layoutY="40.0" mnemonicParsing="false" onAction="#btnAddContact_Clicked" prefHeight="24.0" prefWidth="122.0" text="Add Contact" />
+            <Button layoutX="9.0" layoutY="80.0" mnemonicParsing="false" prefHeight="24.0" prefWidth="122.0" text="Search Contacts" />
+            <Button layoutX="9.0" layoutY="120.0" mnemonicParsing="false" prefHeight="24.0" prefWidth="122.0" text="Remove Contact" />
+            <Button layoutX="9.0" layoutY="160.0" mnemonicParsing="false" prefWidth="122.0" text="Update Contact" />
       </children>
     </AnchorPane>
   </children>

@@ -1,15 +1,19 @@
 package zander;
 
+import javafx.application.Platform;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
+import javafx.scene.Node;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
 import javafx.stage.Modality;
+
+import java.io.IOException;
 import java.util.Optional;
 import javafx.fxml.FXMLLoader;
 import javafx.stage.WindowEvent;
@@ -122,9 +126,9 @@ public class Organizer implements Initializable
     {
         try
         {
-            ButtonType personal = new ButtonType("Personal Contact", ButtonBar.ButtonData.OK_DONE);
-            ButtonType business = new ButtonType("Business Contact", ButtonBar.ButtonData.CANCEL_CLOSE);
-            Alert contactPrompt = new Alert(Alert.AlertType.CONFIRMATION, "What type of contact do you want to add?", personal, business);
+            ButtonType personal = new ButtonType("Personal Contact", ButtonBar.ButtonData.OTHER);
+            ButtonType business = new ButtonType("Business Contact", ButtonBar.ButtonData.OTHER);
+            Alert contactPrompt = new Alert(Alert.AlertType.CONFIRMATION, "What type of contact do you want to add?", personal, business, ButtonType.CANCEL);
             contactPrompt.setHeaderText("Contact Type");
             contactPrompt.initModality(Modality.APPLICATION_MODAL);
             contactPrompt.initOwner(getCurrentStage());
@@ -132,7 +136,7 @@ public class Organizer implements Initializable
             dialogPane.getStylesheets().add(getClass().getResource(laf).toExternalForm());
             dialogPane.getStyleClass().add("dlgDefault");
             Optional<ButtonType> result = contactPrompt.showAndWait();
-            if (result.isPresent() && result.get() == personal)
+            if (result.get() == personal)
             {
                 //Add personal contact
                 Stage addPersonalContactWindow = new Stage(StageStyle.DECORATED);
@@ -142,11 +146,12 @@ public class Organizer implements Initializable
                 addPersonalContactWindow.setWidth(406);
                 addPersonalContactWindow.setHeight(300);
                 addPersonalContactWindow.setScene(new javafx.scene.Scene((javafx.scene.layout.Pane) loader.load(), javafx.scene.paint.Color.TRANSPARENT));
+                addPersonalContactWindow.getScene().getStylesheets().add(getClass().getResource(laf).toExternalForm());
                 AddPersonalContact addPersonalContact = loader.<AddPersonalContact>getController();
                 addPersonalContact.initialize(getCurrentStage());
                 addPersonalContactWindow.showAndWait();
             }
-            else if (result.isPresent() && result.get() == business)
+            else if (result.get() == business)
             {
                 //Add business contact
                 Stage addBusinessContactWindow = new Stage(StageStyle.DECORATED);
@@ -156,15 +161,63 @@ public class Organizer implements Initializable
                 addBusinessContactWindow.setWidth(406);
                 addBusinessContactWindow.setHeight(320);
                 addBusinessContactWindow.setScene(new javafx.scene.Scene((javafx.scene.layout.Pane) loader.load(), javafx.scene.paint.Color.TRANSPARENT));
+                addBusinessContactWindow.getScene().getStylesheets().add(getClass().getResource(laf).toExternalForm());
                 AddBusinessContact addBusinessContact = loader.<AddBusinessContact>getController();
                 addBusinessContact.initialize(getCurrentStage());
                 addBusinessContactWindow.showAndWait();
             }
+            else
+                contactPrompt.close();
 
         }
-        catch(java.io.IOException e)
+        catch(IOException ex)
         {
-            e.printStackTrace();
+            handleException(ex);
+        }
+        catch (Exception ex)
+        {
+            handleException(ex);
+        }
+    }
+
+    /**
+     * Event handler method for File -> Preferences...
+     * @param event
+     */
+    @FXML protected void mnuFile_Preferences_Clicked(ActionEvent event)
+    {
+        try
+        {
+            Stage preferencesWindow = new Stage(StageStyle.DECORATED);
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("Preferences.fxml"));
+            preferencesWindow.setResizable(false);
+            preferencesWindow.setTitle("Contacts Organizer Preferences");
+            preferencesWindow.setScene(new javafx.scene.Scene((javafx.scene.layout.Pane) loader.load(), javafx.scene.paint.Color.TRANSPARENT));
+            preferencesWindow.getScene().getStylesheets().add(getClass().getResource(laf).toExternalForm());
+            Preferences preferences = loader.<Preferences>getController();
+            preferences.initialize(getCurrentStage());
+            preferencesWindow.showAndWait();
+
+            /*getCurrentStage().close();
+            Platform.runLater(() ->
+            {
+                try
+                {
+                    new Main().start(new Stage(), laf, getCurrentStage().getX(), getCurrentStage().getY(), getCurrentStage().getWidth(), getCurrentStage().getHeight(), getCurrentStage().isMaximized());
+                }
+                catch (Exception e)
+                {
+                    handleException(e);
+                }
+            });*/
+        }
+        catch (IOException ex)
+        {
+            handleException(ex);
+        }
+        catch (Exception ex)
+        {
+            handleException(ex);
         }
     }
 
@@ -207,4 +260,56 @@ public class Organizer implements Initializable
         if (!ButtonType.OK.equals(closeResponse.get()))
             event.consume();
     };
+
+    /**
+     * method to handle exceptions
+     * @param ex Exception thrown to handle
+     */
+    protected void handleException(Exception ex)
+    {
+        handleException(ex, "Error");
+    }
+
+    /**
+     * method to handle exceptions with optional window title
+     * @param ex Exception thrown to handle
+     * @param title to be displayed in message box
+     */
+    protected void handleException(Exception ex, String title)
+    {
+        handleException(ex, title, ex.getMessage());
+    }
+
+    /**
+     * method to handle exceptions with optional window title and header
+     * @param ex Exception thrown to handle
+     * @param title to be displayed in message box
+     * @param header caption to be displayed in message box
+     */
+    protected void handleException(Exception ex, String title, String header)
+    {
+        handleException(ex, title, header, ex.toString());
+    }
+
+    /**
+     * method to handle exceptions with optional window title, header and message text
+     * @param ex Exception thrown to handle
+     * @param title to be displayed in message box
+     * @param header caption to be displayed in message box
+     * @param content message for message box to contain
+     */
+    protected void handleException(Exception ex, String title, String header, String content)
+    {
+        if(ex != null)
+            ex.printStackTrace();
+        Alert error = new Alert(Alert.AlertType.ERROR, content);
+        error.initModality(Modality.APPLICATION_MODAL);
+        error.initOwner(getCurrentStage());
+        error.setTitle(title);
+        error.setHeaderText(header);
+        DialogPane dialogPane = error.getDialogPane();
+        dialogPane.getStylesheets().add(getClass().getResource(Organizer.laf).toExternalForm());
+        dialogPane.getStyleClass().add("dlgDefault");
+        error.showAndWait();
+    }
 }

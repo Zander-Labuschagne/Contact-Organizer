@@ -17,6 +17,11 @@
     -fx-background-color: rgb(41, 47, 52);
 }
 
+.label
+{
+    -fx-text-fill: rgb(255, 255, 255);
+}
+
 .txtDefault,
 .txtDefault .content
 {
@@ -149,7 +154,7 @@
 }
 .btnDecryptMessage:hover
 {
-    -fx-effect: dropshadow(gaussian, rgba(0, 93, 255, 1), 5, 0.65, 0, 0);
+    -fx-effect: dropshadow(gaussian, rgba(26, 180, 140, 0.6), 5, 0.65, 0, 0);
     -fx-background-color: rgba(0,93,255,0.1);
 }
 .btnDecryptMessage:focused
@@ -170,7 +175,7 @@
 }
 .btnDecryptFiles:hover
 {
-    -fx-effect: dropshadow(gaussian, rgba(0, 93, 255, 1), 5, 0.65, 0, 0);
+    -fx-effect: dropshadow(gaussian, rgba(26, 180, 140, 0.6), 5, 0.65, 0, 0);
     -fx-background-color: rgba(0,93,255,0.1);
 }
 .btnDecryptFiles:focused
@@ -611,9 +616,9 @@
     /*.check-box > .box,*/
     /*.menu-button,
     .choice-box,
-    .color-picker.split-button > .color-picker-label,
+    .color-picker.split-button > .color-picker-label*/,
     .combo-box-base,
-    .combo-box-base:editable > .arrow-button*/
+    .combo-box-base:editable > .arrow-button
 {
     -fx-background-color: rgb(41, 47, 52);
     -fx-text-fill: rgb(255, 255, 255);
@@ -756,4 +761,52 @@
     -fx-background-color: rgba(26, 188, 156, 0.4);
     -fx-progress-color: rgba(26, 188, 156, 0.4);
     -fx-effect: dropshadow(gaussian, rgba(26, 180, 140, 0.6), 5, 0.65, 0, 0);
+}
+
+.combo-box-base .list-view .list-cell:hover
+{
+    -fx-effect: dropshadow(gaussian, rgba(26, 180, 140, 0.6), 5, 0.65, 0, 0);
+    -fx-background-color: rgba(0,93,255,0.1);
+}
+
+.combo-box-base .list-cell:selected
+{
+    -fx-effect: dropshadow(gaussian, rgba(26, 180, 140, 0.6), 5, 0.65, 0, 0);
+    -fx-background-insets: -0.2, 1, 2, -1.4, 2.6;
+    -fx-background-radius: 3, 2, 1, 4, 1;
+    -fx-text-fill: rgb(255, 255, 255);
+}
+
+.combo-box-base .list-cell
+{
+    -fx-background-color: rgb(41, 47, 52);
+    -fx-text-fill: rgb(255, 255, 255);
+    -fx-border-color: rgb(15, 15, 15);
+}
+
+.combo-box-base .list-view
+{
+    -fx-background-color: rgb(41, 47, 52);
+    -fx-text-fill: rgb(255, 255, 255);
+    -fx-border-color: rgb(15, 15, 15);
+}
+
+.combo-box-base .list-cell:filled:selected:hover
+{
+    -fx-effect: dropshadow(gaussian, rgba(26, 180, 140, 0.6), 5, 0.65, 0, 0);
+    -fx-background-color: rgba(0,93,255,0.1);
+    -fx-background-insets: -0.2, 1, 2, -1.4, 2.6;
+    -fx-background-radius: 3, 2, 1, 4, 1;
+}
+
+.combo-box-base:hover
+{
+    -fx-effect: dropshadow(gaussian, rgba(26, 180, 140, 0.6), 5, 0.65, 0, 0);
+    -fx-background-color: rgba(0,93,255,0.1);
+}
+
+.combo-box-base:showing
+{
+    -fx-effect: dropshadow(gaussian, rgba(26, 180, 140, 0.6), 5, 0.65, 0, 0);
+    -fx-text-fill: rgb(255, 255, 255);
 }
