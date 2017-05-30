@@ -1,18 +1,12 @@
 package zander;
 
-
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.event.ActionEvent;
 import javafx.scene.control.Alert;
-import javafx.scene.control.Button;
-import javafx.scene.control.TableView;
-import javafx.scene.control.ButtonType;
 import javafx.scene.control.DialogPane;
-import javafx.scene.control.ButtonBar;
 import javafx.stage.Stage;
 import javafx.stage.Modality;
-import java.util.Optional;
 import javafx.scene.control.TextField;
 import javafx.scene.Node;
 
@@ -32,7 +26,42 @@ public class AddPersonalContact implements Initializable
     @FXML TextField txtAddress;
     @FXML TextField txtBirthday;
 
+    /**
+     * Called to initialize a controller after its root element has been
+     * completely processed.
+     *
+     * @param location  The location used to resolve relative paths for the root object, or
+     *                  <tt>null</tt> if the location is not known.
+     * @param resources The resources used to localize the root object, or <tt>null</tt> if
+     */
+    @Override
+    public void initialize(java.net.URL location, java.util.ResourceBundle resources)
+    {
 
+    }
+
+    /**
+     *
+     * @param stage
+     */
+    public void initialize(Stage stage)
+    {
+        this.currentStage = currentStage;
+    }
+
+    /**
+     *
+     * @return
+     */
+    public Stage getCurrentStage()
+    {
+        return this.currentStage;
+    }
+
+    /**
+     *
+     * @param event
+     */
     @FXML
     protected void btnAddPersonalContact_Clicked(ActionEvent event)
     {
@@ -98,37 +127,5 @@ public class AddPersonalContact implements Initializable
         dialogPane.getStylesheets().add(getClass().getResource(Organizer.laf).toExternalForm());
         dialogPane.getStyleClass().add("dlgDefault");
         error.showAndWait();
-    }
-
-    /**
-     * Called to initialize a controller after its root element has been
-     * completely processed.
-     *
-     * @param location  The location used to resolve relative paths for the root object, or
-     *                  <tt>null</tt> if the location is not known.
-     * @param resources The resources used to localize the root object, or <tt>null</tt> if
-     */
-    @Override
-    public void initialize(java.net.URL location, java.util.ResourceBundle resources)
-    {
-
-    }
-
-    /**
-     *
-     * @param stage
-     */
-    public void initialize(Stage stage)
-    {
-        this.currentStage = currentStage;
-    }
-
-    /**
-     *
-     * @return
-     */
-    public Stage getCurrentStage()
-    {
-        return this.currentStage;
     }
 }

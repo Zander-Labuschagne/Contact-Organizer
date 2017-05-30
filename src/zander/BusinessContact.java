@@ -1,9 +1,6 @@
-
 package zander;
 
-import javafx.beans.InvalidationListener;
 import javafx.beans.property.SimpleStringProperty;
-import javafx.collections.ArrayChangeListener;
 
 /**
  * Class to manage business contacts
@@ -106,7 +103,7 @@ public class BusinessContact extends Contact
      * Get the company name of contact
      * @return the name of the company of the contact
      */
-    public String getCompanyName()
+    public String getCompany()
     {
         return this.company.get();
     }

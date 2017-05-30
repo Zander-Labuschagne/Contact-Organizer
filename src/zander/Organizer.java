@@ -1,6 +1,5 @@
 package zander;
 
-import com.sun.prism.j2d.PrismPrintPipeline;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -12,11 +11,9 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
 import javafx.stage.Modality;
 import java.util.Optional;
-
 import javafx.fxml.FXMLLoader;
 import javafx.stage.WindowEvent;
 import javafx.stage.StageStyle;
-import sun.awt.image.BufImgSurfaceData;
 
 /**
  * Class used to control and handle GUI events
@@ -86,7 +83,7 @@ public class Organizer implements Initializable
         tcolBirtday.setMinWidth(50);
         tcolBirtday.setCellValueFactory(new PropertyValueFactory<PersonalContact, String>("birthday"));
         tcolCompany = new TableColumn("Company");
-        tcolCompany.setMinWidth(100);
+        tcolCompany.setMinWidth(150);
         tcolCompany.setCellValueFactory(new PropertyValueFactory<BusinessContact, String>("company"));
         tcolDayNo = new TableColumn("Contact Number");
         tcolDayNo.setMinWidth(100);
@@ -96,7 +93,7 @@ public class Organizer implements Initializable
         tcolEMail.setCellValueFactory(new PropertyValueFactory<Contact, String>("eMail"));
         tcolFax = new TableColumn("Fax Number");
         tcolFax.setMinWidth(100);
-        tcolFax.setCellValueFactory(new PropertyValueFactory<BusinessContact, String>("fax"));
+        tcolFax.setCellValueFactory(new PropertyValueFactory<BusinessContact, String>("faxNo"));
         tcolPosition = new TableColumn("Position");
         tcolPosition.setMinWidth(150);
         tcolPosition.setCellValueFactory(new PropertyValueFactory<BusinessContact, String>("position"));
@@ -142,6 +139,8 @@ public class Organizer implements Initializable
                 FXMLLoader loader = new FXMLLoader(getClass().getResource("AddPersonalContact.fxml"));
                 addPersonalContactWindow.setResizable(false);
                 addPersonalContactWindow.setTitle("Add Personal Contact");
+                addPersonalContactWindow.setWidth(406);
+                addPersonalContactWindow.setHeight(300);
                 addPersonalContactWindow.setScene(new javafx.scene.Scene((javafx.scene.layout.Pane) loader.load(), javafx.scene.paint.Color.TRANSPARENT));
                 AddPersonalContact addPersonalContact = loader.<AddPersonalContact>getController();
                 addPersonalContact.initialize(getCurrentStage());
@@ -154,6 +153,8 @@ public class Organizer implements Initializable
                 FXMLLoader loader = new FXMLLoader(getClass().getResource("AddBusinessContact.fxml"));
                 addBusinessContactWindow.setResizable(false);
                 addBusinessContactWindow.setTitle("Add Business Contact");
+                addBusinessContactWindow.setWidth(406);
+                addBusinessContactWindow.setHeight(320);
                 addBusinessContactWindow.setScene(new javafx.scene.Scene((javafx.scene.layout.Pane) loader.load(), javafx.scene.paint.Color.TRANSPARENT));
                 AddBusinessContact addBusinessContact = loader.<AddBusinessContact>getController();
                 addBusinessContact.initialize(getCurrentStage());

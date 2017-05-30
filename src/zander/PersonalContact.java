@@ -1,9 +1,6 @@
 package zander;
 
-import javafx.beans.InvalidationListener;
 import javafx.beans.property.SimpleStringProperty;
-import javafx.collections.ArrayChangeListener;
-import javafx.collections.ObservableArray;
 
 /**
  * Class to manage personal contacts

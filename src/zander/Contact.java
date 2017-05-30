@@ -1,7 +1,6 @@
 package zander;
 
 import javafx.beans.property.SimpleStringProperty;
-import javafx.collections.ObservableArray;
 
 /**
  * @author Zander Labuschagne 23585137
